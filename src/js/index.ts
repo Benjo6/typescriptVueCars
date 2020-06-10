@@ -16,11 +16,12 @@ new Vue({
     el: "#app",
     data: {
         cars: [],
-        errors: [],
         deleteId: 0,
         deleteMessage: "",
         formData: { model: "", vendor: "", price: 0 },
-        addMessage: ""
+        addMessage: "",
+        updateData: { id: 0, model: "", vendor: "", price: 0 },
+        updateMessage: ""
     },
     methods: {
         getAllCars() {
@@ -50,6 +51,19 @@ new Vue({
                 .then((response: AxiosResponse) => {
                     let message: string = "response " + response.status + " " + response.statusText
                     this.addMessage = message
+                    this.getAllCars()
+                })
+                .catch((error: AxiosError) => {
+                    // this.addMessage = error.message
+                    alert(error.message)
+                })
+        },
+        updateCar() {
+            let uri: string = baseUri + "/" + this.updateData.id
+            axios.put<ICar>(uri, this.updateData)
+                .then((response: AxiosResponse) => {
+                    let message: string = "response " + response.status + " " + response.statusText
+                    this.updateMessage = message
                     this.getAllCars()
                 })
                 .catch((error: AxiosError) => {

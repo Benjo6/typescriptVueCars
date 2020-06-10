@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -17,7 +17,7 @@
 <body>
   <h1>Car Shop</h1>
   <div id="app">
-    <h2>Get All</h2>
+    <h2>Get All (GET)</h2>
     <button v-on:click="getAllCars" class="btn btn-primary">Get all cars</button>
 
     <ul v-if="cars.length">
@@ -27,17 +27,25 @@
     </ul>
     <!--span v-else>No cars</span-->
 
-    <h2>Delete</h2>
-    <input class="form-control" v-model.number="deleteId" placeholder="id" type="number"/>
+    <h2>Delete (DELETE)</h2>
+    <input class="form-control" v-model.number="deleteId" placeholder="id" type="number" />
     <button v-on:click="deleteCar(deleteId)" class="btn btn-warning">Delete</button>
     {{deleteMessage}}
 
-    <h2>Add</h2>
-    <input v-model="formData.vodel" placeholder="model" type="text" />
+    <h2>Add (POST)</h2>
+    <input v-model="formData.model" placeholder="model" type="text" />
     <input v-model="formData.vendor" placeholder="vendor" type="text" />
     <input v-model.number="formData.price" placeholder="price" type="number" />
     <button v-on:click="addCar()" class="btn btn-success">Add</button>
     <div>{{addMessage}}</div>
+
+    <h2>Update (PUT)</h2>
+    <input v-model="updateData.id" placeholder="id" type="number" />
+    <input v-model="updateData.model" placeholder="model" type="text" />
+    <input v-model="updateData.vendor" placeholder="vendor" type="text" />
+    <input v-model.number="updateData.price" placeholder="price" type="number" />
+    <button v-on:click="updateCar()" class="btn btn-success">Update</button>
+    <div>{{updateMessage}}</div>
   </div>
   <script src="bundle.js"></script>
 </body>
