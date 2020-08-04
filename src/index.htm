@@ -31,7 +31,12 @@
     <div v-else>No cars</div>
 
     <h2>Get by ID (GET)</h2>
-
+    <input class="form-control" v-model="idToGetBy" placeholder="id" type="number" />
+    <button v-on:click="getById(idToGetBy)" class="btn btn-primary">Get by id</button>
+    <div v-if="singleCar">
+      {{singleCar.id}} {{singleCar.vendor}} {{ singleCar.model}} {{singleCar.price}}
+    </div>
+    <div v-else>No such car</div>
 
     <h2>Delete (DELETE)</h2>
     <input class="form-control" v-model.number="deleteId" placeholder="id" type="number" />

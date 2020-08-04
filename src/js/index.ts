@@ -19,6 +19,8 @@ new Vue({
         deleteId: 0,
         deleteMessage: "",
         vendorToGetBy: "",
+        idToGetBy: -1,
+        singleCar: null,
         formData: { model: "", vendor: "", price: 0 },
         addMessage: "",
         updateData: { id: 0, model: "", vendor: "", price: 0 },
@@ -32,10 +34,21 @@ new Vue({
             let url = baseUrl + "/vendor/" + vendor
             this.helperGetAndShow(url)
         },
-        helperGetAndShow(url: string) {
+        helperGetAndShow(url: string) { // helper metode: getAllCar + getByVendor are very similar
             axios.get<ICar[]>(url)
                 .then((response: AxiosResponse<ICar[]>) => {
                     this.cars = response.data
+                })
+                .catch((error: AxiosError) => {
+                    //this.message = error.message
+                    alert(error.message) // https://www.w3schools.com/js/js_popup.asp
+                })
+        },
+        getById(id: number) {
+            let url: string = baseUrl + "/" + id
+            axios.get<ICar>(url)
+                .then((response: AxiosResponse<ICar>) => {
+                    this.singleCar = response.data
                 })
                 .catch((error: AxiosError) => {
                     //this.message = error.message
