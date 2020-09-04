@@ -21,7 +21,7 @@
     <button v-on:click="getAllCars" class="btn btn-primary">Get all cars</button>
 
     <br /> 
-    <input v-model="vendorToGetBy" placeholder="vendor" type="string" />
+    <input v-model="vendorToGetBy" placeholder="vendor" type="text" />
     <button v-on:click="getByVendor(vendorToGetBy)" class="btn btn-primary">Get by vendor</button>
 
     <ul v-if="cars.length">
