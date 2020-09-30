@@ -45,9 +45,9 @@
     {{deleteMessage}}
 
     <h2>Add (POST)</h2>
-    <input v-model="formData.model" placeholder="model" type="text" />
-    <input v-model="formData.vendor" placeholder="vendor" type="text" />
-    <input v-model.number="formData.price" placeholder="price" type="number" />
+    <input v-model="addData.model" placeholder="model" type="text" />
+    <input v-model="addData.vendor" placeholder="vendor" type="text" />
+    <input v-model.number="addData.price" placeholder="price" type="number" />
     <button v-on:click="addCar()" class="btn btn-success">Add</button>
     <div>{{addMessage}}</div>
 

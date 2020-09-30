@@ -16,12 +16,12 @@ new Vue({
     el: "#app",
     data: {
         cars: [],
-        deleteId: 0,
-        deleteMessage: "",
         vendorToGetBy: "",
         idToGetBy: -1,
         singleCar: null,
-        formData: { model: "", vendor: "", price: 0 },
+        deleteId: 0,
+        deleteMessage: "",
+        addData: { model: "", vendor: "", price: 0 },
         addMessage: "",
         updateData: { id: 0, model: "", vendor: "", price: 0 },
         updateMessage: ""
