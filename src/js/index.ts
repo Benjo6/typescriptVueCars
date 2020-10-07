@@ -68,7 +68,7 @@ new Vue({
                 })
         },
         addCar() {
-            axios.post<ICar>(baseUrl, this.formData)
+            axios.post<ICar>(baseUrl, this.addData)
                 .then((response: AxiosResponse) => {
                     let message: string = "response " + response.status + " " + response.statusText
                     this.addMessage = message
