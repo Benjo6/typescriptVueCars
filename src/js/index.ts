@@ -10,7 +10,9 @@ interface ICar {
     price: number
 }
 
-let baseUrl: string = "http://anbo-carsrest.azurewebsites.net/api/cars"
+// use https (http secure).
+// http (non secure) will make the app complain about mixed content when running the app from Azure
+let baseUrl: string = "https://anbo-carsrest.azurewebsites.net/api/cars"
 
 new Vue({
     el: "#app",
