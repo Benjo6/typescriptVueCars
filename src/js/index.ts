@@ -12,14 +12,15 @@ interface ICar {
 
 // use https (http secure).
 // http (non secure) will make the app complain about mixed content when running the app from Azure
-let baseUrl: string = "https://anbo-carsrest.azurewebsites.net/api/cars"
-
+let baseUrl: string = "https://carzealand.azurewebsites.net/api/localCars"
+ 
 new Vue({
     el: "#app",
     data: {
+        idToUpdate: null,
         cars: [],
         vendorToGetBy: "",
-        idToGetBy: -1,
+        idToGetBy: 1,
         singleCar: null,
         deleteId: 0,
         deleteMessage: "",
@@ -81,16 +82,16 @@ new Vue({
                     alert(error.message)
                 })
         },
-        updateCar() {
-            let url: string = baseUrl + "/" + this.updateData.id
-            axios.put<ICar>(url, this.updateData)
-                .then((response: AxiosResponse) => {
+        updateCar(id: number): void {
+            let uri: string = baseUrl + "/" + id
+            console.log("update Car" + uri)
+            axios.put<number>(uri, this.updateData)
+                .then((response: AxiosResponse<number>) => {
                     let message: string = "response " + response.status + " " + response.statusText
                     this.updateMessage = message
                     this.getAllCars()
                 })
                 .catch((error: AxiosError) => {
-                    // this.addMessage = error.message
                     alert(error.message)
                 })
         }
