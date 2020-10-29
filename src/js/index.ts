@@ -29,6 +29,9 @@ new Vue({
         updateData: { id: 0, model: "", vendor: "", price: 0 },
         updateMessage: ""
     },
+    created(){
+        this.getAllCars()
+    },
     methods: {
         getAllCars() {
             this.helperGetAndShow(baseUrl)
